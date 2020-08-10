@@ -27,7 +27,7 @@ phases:
       - $(aws ecr get-login --no-include-email --region us-west-2)
       - docker push $CDK_ECR_REPO:$GIT_COMMIT_ID
       - docker push $CDK_ECR_REPO:latest
-      - docker login --username $DOCKERHUB_USERNAME --password-stdin $DOCKERHUB_PASSWORD
+      - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
       - docker tag $CDK_ECR_REPO:latest $DOCKERHUB_USERNAME/remote-cdk:latest
       - docker tag $CDK_ECR_REPO:latest $DOCKERHUB_USERNAME/remote-cdk:$GIT_COMMIT_ID
       - docker push $DOCKERHUB_USERNAME/remote-cdk:latest
