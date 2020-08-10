@@ -21,13 +21,7 @@ phases:
       - yarn install
       - ./build.sh --skip-prereqs --skip-test
       - cd ..
-      - codebuild-breakpoint
-      - sh -c "$(wget https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-      - echo "FROM jsii/superchain" >> Dockerfile_img
-      - echo "WORKDIR home" >> Dockerfile_img
-      - echo "COPY aws-cdk ." >> Dockerfile_img
-      - echo "CMD [\"/bin/bash\"]" >> Dockerfile_img
-      - docker build -t $CDK_ECR_REPO:$GIT_COMMIT_ID -t $CDK_ECR_REPO:latest -f Dockerfile_img . 
+      - docker build -t $CDK_ECR_REPO:$GIT_COMMIT_ID -t $CDK_ECR_REPO:latest . 
   post_build:
     commands:
       - $(aws ecr get-login --no-include-email --region us-west-2)
