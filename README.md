@@ -1,5 +1,5 @@
 # remote-cdk
-A collection of utilities for building and developing with the AWS CDK on a remote host
+A collection of utilities for building and developing with the AWS CDK inside a docker container.
 ## Usage
 To mount your local git and aws config files and launch the container, run the following:
 ```sh
